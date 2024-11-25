@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id String @id @default(uuid())
+  title String
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+  description String
+  price Decimal @db.Decimal(5,2)
+  instructor Instructor? @relation(fields: [instructorId], references: [id], onDelete: SetNull)
+  instructorId String?
+}
+
+model Category {
+  id String @id @default(uuid())
+  title String
+  courses Course[]
+}
+
+model Instructor {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  job String
+  description String
+  Courses Course[]
+}
+
+model contacts {
+  id String @id @default(uuid())
+  email String
+  subject String
+  comment String
+}
+
+model emails {
+  id String @id @default(uuid())
+  email String
+}
