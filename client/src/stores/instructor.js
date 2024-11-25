@@ -6,7 +6,7 @@ export const useInstructorStore = defineStore('instructorStore', ({
   }),
   actions: {
     async getInstructors() {
-      const res = await fetch('http://localhost:5000/instructors')
+      const res = await fetch('https://skillnet-server.onrender.com/instructors')
       const data = await res.json()
 
       this.instructors = data;
