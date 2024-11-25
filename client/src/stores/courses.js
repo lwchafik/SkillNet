@@ -8,7 +8,7 @@ export const useCoursesStore = defineStore('coursesStore', {
   actions: {
     async getCourses() {
       this.isLoading = true
-      const res = await fetch('http://localhost:5000/courses')
+      const res = await fetch('https://skillnet-server.onrender.com/courses')
       const data = await res.json()
 
       this.courses = data
