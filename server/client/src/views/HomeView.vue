@@ -243,7 +243,7 @@ import { ref } from "vue";
 const email = ref("");
 
 const emailSignup = async () => {
-  await fetch("http://localhost:5000/contact-form/emails", {
+  await fetch("https://skillnet-server.onrender.com/contact-form/emails", {
     method: "POST",
     body: JSON.stringify({ email: email.value }),
     headers: { "Content-type": "application/json" },

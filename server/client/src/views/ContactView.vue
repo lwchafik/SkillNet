@@ -81,7 +81,7 @@ import { ref } from 'vue';
   // }
 
   const submitForm = async () => {
-    const res = await fetch('http://localhost:5000/contact-form', {
+    const res = await fetch('https://skillnet-server.onrender.com/contact-form', {
       method: 'POST',
       body: JSON.stringify({
         email: email.value,
