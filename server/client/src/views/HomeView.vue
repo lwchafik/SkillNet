@@ -250,8 +250,10 @@ const emailSignup = async () => {
   }).then((res) => {
     if (res.err) {
       console.log(res.err);
-    } else {
-      email.value = "";
+    }
+
+    if (res.ok) {
+      email.value = ""
     }
   });
 };

@@ -15,6 +15,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/emails", async (req, res) => {
+  try {
+    const emails = await prisma.emails.findMany();
+
+    res.status(200).json(emails);
+  } catch (err) {
+    res.status(500).json({ error: "Something bad happened" });
+    console.error(err.message);
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const message = await prisma.contacts.findUnique({
@@ -76,15 +87,6 @@ router.post("/emails", async (req, res) => {
   }
 });
 
-router.get("/emails", async (req, res) => {
-  try {
-    const emails = await prisma.emails.findMany();
 
-    res.status(200).json(emails);
-  } catch (err) {
-    res.status(500).json({ error: "Something bad happened" });
-    console.error(err.message);
-  }
-});
 
 module.exports = router;
